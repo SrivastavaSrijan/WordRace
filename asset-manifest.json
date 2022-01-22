@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/WordRace/static/css/main.5ce2b8be.css",
+    "main.js": "/WordRace/static/js/main.6a6ebd69.js",
+    "static/media/logo.svg": "/WordRace/static/media/logo.3f6122768c9c61cf942bde8547c8c156.svg",
+    "index.html": "/WordRace/index.html",
+    "main.5ce2b8be.css.map": "/WordRace/static/css/main.5ce2b8be.css.map",
+    "main.6a6ebd69.js.map": "/WordRace/static/js/main.6a6ebd69.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ce2b8be.css",
+    "static/js/main.6a6ebd69.js"
+  ]
+}
