@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import wordRaceAppReducer from '../containers/WordRaceApp/state/wordRaceAppSlice';
 import keyboardReducer from '../features/keyboard/state/keyboardSlice';
+import timerReducer from '../features/timer/state/timerSlice';
 import wordStackReducer from '../features/wordStack/state/wordStackSlice';
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
     keyboard: keyboardReducer,
     wordStack: wordStackReducer,
     wordRaceApp: wordRaceAppReducer,
+    timer: timerReducer,
   },
 });
 export type AppDispatch = typeof store.dispatch;

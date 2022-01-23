@@ -2,7 +2,7 @@
   "name": "word-race",
   "version": "0.1.0",
   "license": "MIT",
-  "proxy": "https://apps.srijansrivastava.tech/WordRace",
+  "homepage": "https://apps.srijansrivastava.tech/WordRace",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
@@ -15,19 +15,24 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
     "classnames": "^2.3.1",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.0",
     "react-scripts": "5.0.0",
     "sass": "^1.48.0",
     "typescript": "^4.5.4",
-    "use-constant": "^1.1.0"
+    "use-constant": "^1.1.0",
+    "use-sound": "^4.0.1",
+    "use-timer": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

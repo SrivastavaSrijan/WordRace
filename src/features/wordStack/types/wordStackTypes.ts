@@ -2,6 +2,7 @@ export interface WordStackState {
   isLoading: boolean;
   hasError: boolean | string | undefined;
   wordStackPayload: { text: string; hash: any }[];
+  wordStackLength: number;
   charIndex: number;
   currentWord: string;
   wordIndex: number;

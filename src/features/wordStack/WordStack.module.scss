@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 @mixin input($color) {
   color: currentColor;
   text-decoration: none;
@@ -6,17 +8,18 @@
   color: hsl(0, 0%, 100%);
   box-shadow: inset 0 -1.1em 0 0 $color;
 }
+
 div.container {
   place-content: space-between;
   div.wordStackContainer {
     display: flex;
+    width: 90vw;
     color: black;
     flex-flow: row wrap;
     gap: 0 0.75rem;
     line-height: 1.5rem;
     place-content: center;
     p {
-      width: 100%;
       text-transform: uppercase;
     }
   }
@@ -30,7 +33,7 @@ div.container {
         stroke-linecap: round;
         stroke-dasharray: 360;
         stroke-width: 6;
-        stroke: blue;
+        stroke: $primary-color;
         fill: transparent;
         animation: spin 0.6s ease-in-out 0s normal infinite;
       }
@@ -51,4 +54,20 @@ div.container {
 }
 .notLetter {
   color: grey;
+}
+.stack {
+  gap: 1rem;
+  p {
+    animation: append-animate 0.3s linear;
+  }
+}
+@keyframes append-animate {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

@@ -6,7 +6,7 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 import client from '../../../api/client';
-import { useHashCode } from '../../../app/hooks';
+import { shuffle, useHashCode } from '../../../app/hooks';
 import { RootState } from '../../../app/store';
 import { WordResponse, WordStackState } from '../types/wordStackTypes';
 
@@ -39,11 +39,18 @@ const changeWordReducer: CaseReducer<WordStackState, PayloadAction<number>> = (
   state.currentWord = state.wordStackPayload[action.payload]?.text;
 };
 
-const wordIndexReducer: CaseReducer<WordStackState, PayloadAction<number>> = (
-  state,
-  action: PayloadAction<number>,
-) => {
+const setWordIndexReducer: CaseReducer<
+  WordStackState,
+  PayloadAction<number>
+> = (state, action: PayloadAction<number>) => {
   state.wordIndex = action.payload;
+};
+
+const setWordStackLengthReducer: CaseReducer<
+  WordStackState,
+  PayloadAction<number>
+> = (state, action: PayloadAction<number>) => {
+  state.wordStackLength = action.payload;
 };
 
 export const fetchWord = createAsyncThunk('wordStack/fetchWord', async () => {
@@ -55,6 +62,7 @@ const initialState = {
   isLoading: false,
   hasError: false,
   wordStackPayload: [],
+  wordStackLength: 0,
   charIndex: -1,
   currentWord: '',
   wordIndex: 1,
@@ -67,7 +75,8 @@ export const slice = createSlice({
     hasError: setErrorReducer,
     setCharacter: setCharacterReducer,
     changeWord: changeWordReducer,
-    wordIndex: wordIndexReducer,
+    setWordIndex: setWordIndexReducer,
+    setWordStackLength: setWordStackLengthReducer,
   },
   extraReducers(builder) {
     builder
@@ -82,7 +91,7 @@ export const slice = createSlice({
             hash: useHashCode(val[index]),
           }),
         );
-        state.wordStackPayload = wordQueue;
+        state.wordStackPayload = shuffle(wordQueue);
         const currentWord = wordQueue[0]?.text;
         state.charIndex = 0;
         state.currentWord = currentWord;
@@ -93,8 +102,14 @@ export const slice = createSlice({
   },
 });
 
-export const { setLoading, hasError, setCharacter, changeWord, wordIndex } =
-  slice.actions;
+export const {
+  setLoading,
+  hasError,
+  setCharacter,
+  changeWord,
+  setWordIndex,
+  setWordStackLength,
+} = slice.actions;
 
 export const selectCurrentWord = (state: RootState) =>
   state.wordStack.currentWord;
@@ -104,5 +119,15 @@ export const selectWordIndex = (state: RootState) => state.wordStack.wordIndex;
 export const selectIsLoading = (state: RootState) => state.wordStack.isLoading;
 
 export const selectCharIndex = (state: RootState) => state.wordStack.charIndex;
+
+export const selectWordStackLength = (state: RootState) =>
+  state.wordStack.wordStackLength;
+
+export const selectWordStackPending = (state: RootState) => {
+  const {
+    wordStack: { wordStackPayload, wordStackLength, wordIndex },
+  } = state;
+  return wordStackPayload.slice(wordIndex + 1, wordIndex + 1 + wordStackLength);
+};
 
 export default slice.reducer;

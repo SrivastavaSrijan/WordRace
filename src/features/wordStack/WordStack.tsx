@@ -9,17 +9,22 @@ import {
   selectCharIndex,
   selectCurrentWord,
   selectIsLoading,
+  selectWordStackPending,
 } from './state/wordStackSlice';
 import {
   recieveAppStatus,
+  selectLevel,
   selectStatus,
 } from '../../containers/WordRaceApp/state/wordRaceAppSlice';
+import { AppStatus } from '../../containers/WordRaceApp/types/wordRaceAppTypes';
 
 function WordStack() {
   const currentWord = useAppSelector(selectCurrentWord);
   const charIndex = useAppSelector(selectCharIndex);
   const currentStatus = useAppSelector(selectStatus);
   const isLoading = useAppSelector(selectIsLoading);
+  const wordStackPending = useAppSelector(selectWordStackPending);
+  const currentLevel = useAppSelector(selectLevel);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchWord());
@@ -27,6 +32,24 @@ function WordStack() {
       dispatch(recieveAppStatus('IDLE'));
     };
   }, [dispatch]);
+
+  useEffect(() => {
+    const maxLength = Math.max(10 - currentLevel, 0);
+    if (wordStackPending.length >= maxLength) {
+      dispatch(recieveAppStatus('OVER'));
+    }
+  }, [wordStackPending]);
+
+  const shouldRender = (status: AppStatus) => {
+    switch (status) {
+      case 'IDLE':
+        return 'Press SPACEBAR to start!';
+      case 'OVER':
+        return 'Better luck next time, press SPACEBAR to restart';
+      default:
+        return false;
+    }
+  };
   return (
     <div className={cx('container', styles.container)}>
       {isLoading ? (
@@ -38,8 +61,8 @@ function WordStack() {
       ) : (
         <div className={cx(styles.wordStackContainer)}>
           <p className="frosted-glass">
-            {currentStatus === 'IDLE'
-              ? 'Press Enter to start!'
+            {shouldRender(currentStatus)
+              ? shouldRender(currentStatus)
               : currentWord
                   .split('')
                   .map((letter, index) => (
@@ -54,6 +77,13 @@ function WordStack() {
                     </span>
                   ))}
           </p>
+          <div className={cx(styles.stack, 'flex-row')}>
+            {wordStackPending.map((val) => (
+              <p className={cx(styles.notLetter)} key={val.hash}>
+                {val.text}
+              </p>
+            ))}
+          </div>
         </div>
       )}
     </div>

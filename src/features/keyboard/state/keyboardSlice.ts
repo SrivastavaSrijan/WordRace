@@ -23,11 +23,11 @@ export const slice = createSlice({
   initialState,
   reducers: {
     setKey: setKeyReducer,
-    keyCount: keyCountReducer,
+    setKeyCount: keyCountReducer,
   },
 });
 
-export const { setKey, keyCount } = slice.actions;
+export const { setKey, setKeyCount } = slice.actions;
 
 export const selectKeyPressed = (state: RootState) => state.keyboard.keyPressed;
 export const selectKeyCount = (state: RootState) => state.keyboard.keyCount;
