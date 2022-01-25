@@ -1,44 +1,85 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Word Race - A fun game to gauge how fast you type!
 
-## Available Scripts
+## 📌 Overview
 
-In the project directory, you can run:
+Word Race is a game designed to improve QWERTY typing rate and efficiency. Words appear one by one at a rate that goes up as time progresses. There's a limited "stack space" that fills up after a certain amount of words have appeared. Once a player types a word correctly, that word is removed from the stack.
 
-### `yarn start`
+The score is calculated based on how fast the player was able to clear that word, and a multiplier. The multiplier increases with every word the player types correctly and resets on any mistype. Optionally a leveling system can also be added that varies the word appearing rate, the stack space and leveling up bonus score, else the rate can go up constantly, flattening out at say one word per two seconds.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If the stack is full, it's game over. The player can then submit their score and compare with a leaderboard.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 🛠 Implemention Details
 
-### `yarn test`
+### Component Heirarchy
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<details>
+<summary>Keyboard</summary>
+<p>
+<br>
+  1. Keyboard based on JSX, styled using CSSModules
+  2. Iterates through an array to render out keys, row-wise, and sets up event listeners for them
+  3. Accepts SPACEBAR to start, and then dipatches keyPressed and keyCounts if keydown and keyup events are triggered
+  4. Selects characterRequested and length. If keyPressed === characterRequested, and keyCount === wordLength, then the word typed is correct!
+  5. Dispatches isCorrect, which is the corresponding action to WordRaceApp
+  5. If incorrect, dispatches action to decrement score
+</p>
+</details>
 
-### `yarn build`
+<details>
+<summary>WordStack</summary>
+<p>
+<br>
+  1. Keyboard based on JSX, styled using CSSModules
+  2. Iterates through an array to render out keys, row-wise, and sets up event listeners for them
+  3. Accepts SPACEBAR to start, and then dipatches keyPressed and keyCounts if keydown and keyup events are triggered
+  4. Selects characterRequested and length. If keyPressed === characterRequested, and keyCount === wordLength, then the word typed is correct!
+  5. Dispatches isCorrect, which is the corresponding action to WordRaceApp
+  5. If incorrect, dispatches action to decrement score
+</p>
+</details>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<details>
+<summary>Timer</summary>
+<p>
+<br>
+  1. Keyboard based on JSX, styled using CSSModules
+  2. Iterates through an array to render out keys, row-wise, and sets up event listeners for them
+  3. Accepts SPACEBAR to start, and then dipatches keyPressed and keyCounts if keydown and keyup events are triggered
+  4. Selects characterRequested and length. If keyPressed === characterRequested, and keyCount === wordLength, then the word typed is correct!
+  5. Dispatches isCorrect, which is the corresponding action to WordRaceApp
+  5. If incorrect, dispatches action to decrement score
+</p>
+</details>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<details>
+<summary>WordRaceApp</summary>
+<p>
+<br>
+  1. Keyboard based on JSX, styled using CSSModules
+  2. Iterates through an array to render out keys, row-wise, and sets up event listeners for them
+  3. Accepts SPACEBAR to start, and then dipatches keyPressed and keyCounts if keydown and keyup events are triggered
+  4. Selects characterRequested and length. If keyPressed === characterRequested, and keyCount === wordLength, then the word typed is correct!
+  5. Dispatches isCorrect, which is the corresponding action to WordRaceApp
+  5. If incorrect, dispatches action to decrement score
+</p>
+</details>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### Starting the Project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Install the dependencies with `npm i` or `yarn`  
+Start the project by `npm start` or `yarn start`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You can deploy easily by using [GHPages](https://www.npmjs.com/package/gh-pages) 🎉
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## ⚙ Tech Stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+- Redux
+- CSSModules
+- TypeScript
+- ESLint and Prettier
+- 3rd Party Libraries - Classnames, UseSound, UseConstant and UseTimer
