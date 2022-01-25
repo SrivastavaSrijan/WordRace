@@ -3,6 +3,7 @@ export interface WordStackState {
   hasError: boolean | string | undefined;
   wordStackPayload: { text: string; hash: any }[];
   wordStackLength: number;
+  maxWordStackLength: number;
   charIndex: number;
   currentWord: string;
   wordIndex: number;

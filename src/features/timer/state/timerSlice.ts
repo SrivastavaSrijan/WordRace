@@ -41,7 +41,7 @@ const initialState = {
   currentTime: 0,
   initialTime: 0,
   timerType: 'INCREMENTAL',
-  interval: 5,
+  interval: 7,
   status: 'STOPPED',
 } as TimerState;
 export const slice = createSlice({

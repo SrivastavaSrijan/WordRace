@@ -40,5 +40,8 @@ body {
 
   .bold {
     font-weight: 900;
+    word-break: break-word;
+    max-width: 10vw;
+    text-align: center;
   }
 }

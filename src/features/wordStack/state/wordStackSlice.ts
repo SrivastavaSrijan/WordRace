@@ -53,6 +53,13 @@ const setWordStackLengthReducer: CaseReducer<
   state.wordStackLength = action.payload;
 };
 
+const setMaxWordStackLengthReducer: CaseReducer<
+  WordStackState,
+  PayloadAction<number>
+> = (state, action: PayloadAction<number>) => {
+  state.maxWordStackLength = action.payload;
+};
+
 export const fetchWord = createAsyncThunk('wordStack/fetchWord', async () => {
   const response = await client.get(QUOTABLE_API);
   return response.data as WordResponse[];
@@ -63,6 +70,7 @@ const initialState = {
   hasError: false,
   wordStackPayload: [],
   wordStackLength: 0,
+  maxWordStackLength: 0,
   charIndex: -1,
   currentWord: '',
   wordIndex: 1,
@@ -77,6 +85,7 @@ export const slice = createSlice({
     changeWord: changeWordReducer,
     setWordIndex: setWordIndexReducer,
     setWordStackLength: setWordStackLengthReducer,
+    setMaxWordStackLength: setMaxWordStackLengthReducer,
   },
   extraReducers(builder) {
     builder
@@ -109,6 +118,7 @@ export const {
   changeWord,
   setWordIndex,
   setWordStackLength,
+  setMaxWordStackLength,
 } = slice.actions;
 
 export const selectCurrentWord = (state: RootState) =>
@@ -123,6 +133,8 @@ export const selectCharIndex = (state: RootState) => state.wordStack.charIndex;
 export const selectWordStackLength = (state: RootState) =>
   state.wordStack.wordStackLength;
 
+export const selectMaxWordStackLength = (state: RootState) =>
+  state.wordStack.maxWordStackLength;
 export const selectWordStackPending = (state: RootState) => {
   const {
     wordStack: { wordStackPayload, wordStackLength, wordIndex },

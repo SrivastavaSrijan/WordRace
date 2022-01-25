@@ -10,6 +10,7 @@ import {
   selectCurrentWord,
   selectIsLoading,
   selectWordStackPending,
+  setMaxWordStackLength,
 } from './state/wordStackSlice';
 import {
   recieveAppStatus,
@@ -35,7 +36,9 @@ function WordStack() {
 
   useEffect(() => {
     const maxLength = Math.max(10 - currentLevel, 0);
-    if (wordStackPending.length >= maxLength) {
+    const wordStackLength = wordStackPending.length;
+    dispatch(setMaxWordStackLength(maxLength - wordStackLength));
+    if (wordStackLength >= maxLength) {
       dispatch(recieveAppStatus('OVER'));
     }
   }, [wordStackPending]);
