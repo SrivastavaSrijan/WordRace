@@ -15,9 +15,9 @@ img.logo {
   pointer-events: none;
 }
 .header {
-  width: 50vw;
+  min-width: 50vw;
+  min-height: 15vh;
   gap: 1vw;
-  height: 15vh;
   h1 {
     flex: 1;
     text-align: center;

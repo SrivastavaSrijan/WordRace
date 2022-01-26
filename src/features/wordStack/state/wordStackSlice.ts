@@ -60,6 +60,10 @@ const setMaxWordStackLengthReducer: CaseReducer<
   state.maxWordStackLength = action.payload;
 };
 
+const randomizeWordArrayReducer: CaseReducer<WordStackState> = (state) => {
+  state.wordStackPayload = shuffle(state.wordStackPayload);
+};
+
 export const fetchWord = createAsyncThunk('wordStack/fetchWord', async () => {
   const response = await client.get(QUOTABLE_API);
   return response.data as WordResponse[];
@@ -86,6 +90,7 @@ export const slice = createSlice({
     setWordIndex: setWordIndexReducer,
     setWordStackLength: setWordStackLengthReducer,
     setMaxWordStackLength: setMaxWordStackLengthReducer,
+    randomizeWordArray: randomizeWordArrayReducer,
   },
   extraReducers(builder) {
     builder
@@ -119,6 +124,7 @@ export const {
   setWordIndex,
   setWordStackLength,
   setMaxWordStackLength,
+  randomizeWordArray,
 } = slice.actions;
 
 export const selectCurrentWord = (state: RootState) =>

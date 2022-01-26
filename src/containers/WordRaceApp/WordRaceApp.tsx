@@ -27,6 +27,7 @@ import {
 } from '../../features/keyboard/state/keyboardSlice';
 import {
   changeWord,
+  randomizeWordArray,
   selectMaxWordStackLength,
   selectWordIndex,
   selectWordStackLength,
@@ -79,6 +80,7 @@ function WordRaceApp() {
         dispatch(setWordStackLength(0));
         dispatch(shouldStopTimer(true));
         dispatch(setMaxWordStackLength(0));
+        dispatch(randomizeWordArray());
         pause();
         if (status === 'OVER') {
           playFailed();
@@ -107,21 +109,25 @@ function WordRaceApp() {
         (baseScore - wordStackLength) * (wordIndexValue + currentLevel);
       dispatch(incrementScore(scoreToIncrement));
 
-      /** Handle leveling upto level 4 */
+      /** Handle leveling upto level 5 */
       switch (wordIndexValue) {
         case 5:
           dispatch(setLevel(2));
-          dispatch(setIntervalTimer(5));
+          dispatch(setIntervalTimer(7));
           break;
         case 10:
           dispatch(setLevel(3));
-          dispatch(setIntervalTimer(3));
+          dispatch(setIntervalTimer(5));
           break;
         case 15:
           dispatch(setLevel(4));
-          dispatch(setIntervalTimer(2));
+          dispatch(setIntervalTimer(3));
           break;
         case 20:
+          dispatch(setLevel(5));
+          dispatch(setIntervalTimer(2));
+          break;
+        case 25:
           dispatch(recieveAppStatus('FINISHED'));
           break;
         default:

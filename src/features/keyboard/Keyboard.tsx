@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
 import cx from 'classnames';
 import useConstant from 'use-constant';
 import useSound from 'use-sound';
@@ -23,7 +23,7 @@ import {
   selectStatus,
   setLevel,
 } from '../../containers/WordRaceApp/state/wordRaceAppSlice';
-import { shouldStartTimer } from '../timer/state/timerSlice';
+import { setIntervalTimer, shouldStartTimer } from '../timer/state/timerSlice';
 /** Initialize sound effects */
 const correctSound = require('../../assets/sounds/correct.mp3');
 const wrongSound = require('../../assets/sounds/wrong.mp3');
@@ -124,10 +124,13 @@ function Keyboard() {
       /** Recieve start game signal */
       if (code === ' ' && ['IDLE', 'OVER'].includes(status)) {
         dispatch(recieveAppStatus('STARTED'));
-        playStart();
-        dispatch(shouldStartTimer(true));
         dispatch(resetScore());
         dispatch(setLevel(1));
+        dispatch(setIntervalTimer(10));
+        setTimeout(() => {
+          dispatch(shouldStartTimer(true));
+          playStart();
+        }, 1000);
         return;
       }
       /** If game is not started or disallowed keys are pressed, disallow input  */
@@ -180,7 +183,16 @@ function Keyboard() {
     }
     return '';
   };
-
+  const onMouseDown = (event: MouseEvent) => {
+    const key = (event.target as HTMLElement).dataset.char;
+    const keyDownEvent = new KeyboardEvent('keydown', { key });
+    document.dispatchEvent(keyDownEvent);
+  };
+  const onMouseUp = (event: MouseEvent) => {
+    const key = (event.target as HTMLElement).dataset.char;
+    const keyUpEvent = new KeyboardEvent('keyup', { key });
+    document.dispatchEvent(keyUpEvent);
+  };
   const gameExplaination = useConstant(
     () => `Word Race is a game designed to improve QWERTY typing rate and efficiency. 
     Words appear one by one at a rate that goes up as time progresses. 
@@ -206,6 +218,9 @@ function Keyboard() {
                   key={key}
                   className={cx(styles.letter, shouldHighlight(key))}
                   data-char={key}
+                  onMouseDown={onMouseDown}
+                  onMouseUp={onMouseUp}
+                  role="none"
                 >
                   {key}
                 </div>

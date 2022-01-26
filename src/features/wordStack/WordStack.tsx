@@ -42,6 +42,8 @@ function WordStack() {
       dispatch(recieveAppStatus('OVER'));
     }
   }, [wordStackPending]);
+  const startGameOnClick = () =>
+    document.dispatchEvent(new KeyboardEvent('keyup', { key: ' ' }));
 
   const shouldRender = (status: AppStatus) => {
     switch (status) {
@@ -65,6 +67,8 @@ function WordStack() {
         </div>
       ) : (
         <div
+          onMouseUp={startGameOnClick}
+          role="none"
           className={cx(
             styles.wordStackContainer,
             !shouldRender(currentStatus) ? styles.hasWord : '',
