@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/WordRace/static/css/main.3fe15b5c.css",
-    "main.js": "/WordRace/static/js/main.edbc96fb.js",
+    "main.css": "/WordRace/static/css/main.da542e2a.css",
+    "main.js": "/WordRace/static/js/main.a7d3e2af.js",
     "static/js/845.c4925f92.chunk.js": "/WordRace/static/js/845.c4925f92.chunk.js",
     "static/media/countdown.mp3": "/WordRace/static/media/countdown.db760888c0942ed4200e.mp3",
     "static/media/failed.mp3": "/WordRace/static/media/failed.03d5c886a657f34ca1e8.mp3",
@@ -11,12 +11,12 @@
     "static/media/wrong.mp3": "/WordRace/static/media/wrong.42f5ea5793d72149123b.mp3",
     "static/media/logo.svg": "/WordRace/static/media/logo.3f6122768c9c61cf942bde8547c8c156.svg",
     "index.html": "/WordRace/index.html",
-    "main.3fe15b5c.css.map": "/WordRace/static/css/main.3fe15b5c.css.map",
-    "main.edbc96fb.js.map": "/WordRace/static/js/main.edbc96fb.js.map",
+    "main.da542e2a.css.map": "/WordRace/static/css/main.da542e2a.css.map",
+    "main.a7d3e2af.js.map": "/WordRace/static/js/main.a7d3e2af.js.map",
     "845.c4925f92.chunk.js.map": "/WordRace/static/js/845.c4925f92.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3fe15b5c.css",
-    "static/js/main.edbc96fb.js"
+    "static/css/main.da542e2a.css",
+    "static/js/main.a7d3e2af.js"
   ]
 }
