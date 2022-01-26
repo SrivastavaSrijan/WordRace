@@ -1,10 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
-import useConstant from 'use-constant';
-import cx from 'classnames';
 import { useTimer } from 'use-timer';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import styles from './Timer.module.scss';
 import {
   selectInterval,
   selectShouldStart,
@@ -16,7 +12,6 @@ import {
   selectWordStackLength,
   setWordStackLength,
 } from '../wordStack/state/wordStackSlice';
-import { recieveAppStatus } from '../../containers/WordRaceApp/state/wordRaceAppSlice';
 
 function WordStack() {
   const shouldStart = useAppSelector(selectShouldStart);
@@ -29,7 +24,7 @@ function WordStack() {
       dispatch(setWordStackLength(wordStackLength + 1));
     }
   };
-  const { time, start, pause, reset, status } = useTimer({
+  const { time, start, pause, reset } = useTimer({
     onTimeUpdate,
   });
 

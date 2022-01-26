@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useCallback, useEffect } from 'react';
-import useConstant from 'use-constant';
+import React, { useEffect } from 'react';
 import cx from 'classnames';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import styles from './WordStack.module.scss';
@@ -20,6 +18,7 @@ import {
 import { AppStatus } from '../../containers/WordRaceApp/types/wordRaceAppTypes';
 
 function WordStack() {
+  /** Add some selectors */
   const currentWord = useAppSelector(selectCurrentWord);
   const charIndex = useAppSelector(selectCharIndex);
   const currentStatus = useAppSelector(selectStatus);
@@ -34,6 +33,7 @@ function WordStack() {
     };
   }, [dispatch]);
 
+  /** Dispatch the game status according to the length of the max word stack length permissible */
   useEffect(() => {
     const maxLength = Math.max(10 - currentLevel, 0);
     const wordStackLength = wordStackPending.length;
@@ -49,6 +49,8 @@ function WordStack() {
         return 'Press SPACEBAR to start!';
       case 'OVER':
         return 'Better luck next time, press SPACEBAR to restart';
+      case 'FINISHED':
+        return "GG, you've done the impossible!";
       default:
         return false;
     }
@@ -62,8 +64,13 @@ function WordStack() {
           </svg>
         </div>
       ) : (
-        <div className={cx(styles.wordStackContainer)}>
-          <p className="frosted-glass">
+        <div
+          className={cx(
+            styles.wordStackContainer,
+            !shouldRender(currentStatus) ? styles.hasWord : '',
+          )}
+        >
+          <p className={cx(styles.large, 'frosted-glass')}>
             {shouldRender(currentStatus)
               ? shouldRender(currentStatus)
               : currentWord

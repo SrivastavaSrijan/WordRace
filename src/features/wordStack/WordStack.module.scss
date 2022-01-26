@@ -19,8 +19,11 @@ div.container {
     gap: 0 0.75rem;
     line-height: 1.5rem;
     place-content: center;
-    p {
+    &.hasWord {
       text-transform: uppercase;
+      p.large {
+        font-size: calc(10px + 5vmin);
+      }
     }
   }
   div.spinnerContainer {
@@ -58,7 +61,7 @@ div.container {
 .stack {
   gap: 1rem;
   p {
-    animation: append-animate 0.3s linear;
+    animation: append-animate 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 }
 @keyframes append-animate {

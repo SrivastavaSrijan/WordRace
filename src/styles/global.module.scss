@@ -2,6 +2,10 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  background-color: #f1eed4;
+  background: url('https://images.unsplash.com/photo-1605429201125-37e867327609?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80')
+    no-repeat center center fixed;
+  background-size: cover;
   h1,
   p {
     margin-block-start: 0;
@@ -20,26 +24,28 @@ body {
     flex-flow: row wrap;
   }
   .frosted-glass {
+    transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
     background-color: $primary-color;
     padding: 1rem 2rem;
     border-radius: 5rem;
+  }
+  .small-font {
+    font-size: 12px;
+    padding: 1rem 3rem;
+    width: 50vw;
   }
   .flex-column {
     @include flex();
     flex-flow: column wrap;
   }
   #root {
-    background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23e4dfe4' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23cac0c9' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%23afa0af' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23958194' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%237A6179' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
-    background-attachment: fixed;
-    background-size: cover;
-    color: black;
     padding-top: 8vh;
     min-height: 92vh;
+    backdrop-filter: blur(6px);
   }
 
   .bold {
-    font-weight: 900;
+    font-weight: 600;
     word-break: break-word;
     max-width: 10vw;
     text-align: center;
