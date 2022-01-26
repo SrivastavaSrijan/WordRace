@@ -55,8 +55,9 @@ If the stack is full, it's game over.
   1. Root App.jsx which is the heart of the application
   2. Handles the OVER status and resets the score, timer and word index, as well as the character to be requested
   3. Handles the use case when the word typed is correct - handles setting the next word, resetting key pres count and character index, and the socre to increment
-  4. Handles score incremention and level progression - right now, the maximum level to reach is 3
-  5. Triggers sound effects for warning the user that the stack is almost full, and also that the game is over
+  4. The score is calculated on the basis of a base score, decremented by word stack length, multiplied by the the number of words typed added with the current level
+  5. Handles score incremention and level progression - right now, the maximum level to reach is 3
+  6. Triggers sound effects for warning the user that the stack is almost full, and also that the game is over
 </p>
 </details>
 
