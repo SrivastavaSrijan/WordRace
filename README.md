@@ -2,7 +2,7 @@
 A fun, React-Redux game to gauge how fast you type, developed by someone who potentially has stubby fingers 🖖🏻
 
 ## 👁️ Preview
-Check it out here - [Pomodoro Clock](https://apps.srijansrivastava.tech/PomodoroClock/)
+Check it out here - [Word Race](https://apps.srijansrivastava.tech/PomodoroClock/)
 
 ## ⏲️ About the Application
 
