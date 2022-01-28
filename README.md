@@ -1,7 +1,10 @@
-## Word Race - A fun game to gauge how fast you type!
-A fun, React-Redux application, developed from scratch by someone who potentially has stubby fingers 🖖🏻
+## ⚔️ Word Race 
+A fun, React-Redux game to gauge how fast you type, developed by someone who potentially has stubby fingers 🖖🏻
 
-## 📌 Overview
+## 👁️ Preview
+Check it out here - [Pomodoro Clock](https://apps.srijansrivastava.tech/PomodoroClock/)
+
+## ⏲️ About the Application
 
 Word Race is a game designed to improve QWERTY typing rate and efficiency. Words appear one by one at a rate that goes up as time progresses. There's a limited "stack space" that fills up after a certain amount of words have appeared. Once a player types a word correctly, that word is removed from the stack.
 
@@ -62,12 +65,12 @@ If the stack is full, it's game over.
 </details>
 
 
-### Starting the Project
+### 🐎 Starting the Project
 
 Install the dependencies with `npm i` or `yarn`  
 Start the project by `npm start` or `yarn start`
 
-### Deployment
+### 🕸️ Deployment
 
 You can deploy easily by using [GHPages](https://www.npmjs.com/package/gh-pages) 🎉
 
